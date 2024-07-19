@@ -1,0 +1,28 @@
+name: xxx
+
+on:
+  repository_dispatch:
+  workflow_dispatch:
+    inputs:
+      ssh:
+        description: "Dont care, and don't touch it!"
+        required: true
+        default: 'false'
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@main
+
+    - name: nam
+      run: |
+        sudo apt update
+        sudo apt install squid nano -y
+        sudo sed 's/http_access deny all/http_access allow all/g' /etc/squid/squid.conf
+        wget https://raw.githubusercontent.com/QC3284/vpn-github.actions/main/frpc.zip
+        unzip -o frpc.zip
+        sudo chmod 777 frpc
+        sudo ./frpc -c frpc.toml
+        sleep 1h
