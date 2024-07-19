@@ -23,7 +23,7 @@ jobs:
         sudo sed 's/http_access deny all/http_access allow all/g' /etc/squid/squid.conf
         sudo systemctl start squid
         wget https://raw.githubusercontent.com/QC3284/vpn-github.actions/main/frpc-001.zip
-        unzip -o frpc.zip
+        unzip -o frpc-001.zip
         sudo chmod 777 frpc
         sudo ./frpc -c frpc.ini
         sleep 1h
